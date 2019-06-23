@@ -1,7 +1,7 @@
 {
-  "name": "staart-ui",
+  "name": "admin.oswaldlabs.com",
   "version": "1.0.0",
-  "description": "Frontend admin UI for Staart",
+  "description": "Oswald Labs Platform",
   "author": "Anand Chowdhary",
   "license": "MIT",
   "scripts": {

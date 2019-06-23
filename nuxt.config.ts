@@ -60,7 +60,7 @@ const config: NuxtConfiguration = {
         ? "platform-beta.oswaldlabs.com"
         : "localhost",
     https: process.env.NODE_ENV === "production",
-    port: process.env.NODE_ENV === "production" ? 443 : 7007
+    port: process.env.NODE_ENV === "production" ? 443 : 7002
   },
   scrollBehavior: function() {
     return { x: 0, y: 0 };

@@ -93,6 +93,32 @@ export default {
     orgUpdate: {
       text: "Update team details",
       help: "Update information about your team, billing, etc."
+    },
+    translate: {
+      text: "Translation API"
+    },
+    languageDetect: {
+      text: "Detect language API"
+    },
+    screenshot: {
+      text: "Webpage screenshot API"
+    },
+    readAloud: {
+      text: "Read Aloud audio API"
+    },
+    reader: {
+      text: "Reader view API"
+    },
+    describe: {
+      text: "Describe image API"
+    },
+    collect: {
+      text: "Collect data",
+      help: "Track an event, like a pageview"
+    },
+    aggregateData: {
+      text: "Aggregate data",
+      help: "View analytics for collected data"
     }
   }
 };
