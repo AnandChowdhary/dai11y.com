@@ -103,7 +103,7 @@ aside nav {
     font-weight: bold;
     padding-left: 1rem;
     margin-left: -1rem;
-    color: #492257;
+    color: #3867d6;
     background-color: #fff;
     border-radius: 0.2rem 0 0 0.2rem;
     box-shadow: -7px 10px 10px rgba(60, 66, 87, 0.075), 2px 0 0 #fff;

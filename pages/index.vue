@@ -2,7 +2,11 @@
   <div>
     <header class="section section--bg-white">
       <div class="container">
-        <h1>Get work done with Product.</h1>
+        <h1>Build accessible apps with Oswald Labs Platform.</h1>
+        <p>
+          Oswald Labs Platform is an open, inclusive set of APIs and tools to
+          build accessible apps.
+        </p>
         <div v-if="isAuthenticated">
           <nuxt-link
             class="button button--size-large button--color-primary"
@@ -19,9 +23,6 @@
         </div>
       </div>
     </header>
-    <main class="container section section--mt-1">
-      Your landing page comes here.
-    </main>
   </div>
 </template>
 
@@ -40,7 +41,6 @@ export default class Home extends Vue {}
 <style lang="scss" scoped>
 header {
   padding: 15rem 0 7.5rem 0;
-  margin-bottom: 7.5rem;
   margin-top: -7.5rem;
   h1 {
     margin: 0 0 2rem 0;

@@ -1,73 +1,7 @@
 <template>
   <div v-if="isVisible" class="footer">
-    <div v-if="!isAuthenticated" class="banner">
-      <div class="hero hero--align-center">
-        <h1>It's a no-brainer&mdash;get started now.</h1>
-        <div>
-          <nuxt-link
-            class="button button--size-large button--color-primary"
-            to="/auth/register"
-            >Get started for free &rarr;</nuxt-link
-          >
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="larger">
-        <nuxt-link class="logo" to="/">Staart</nuxt-link>
-        <p>
-          <a target="_blank" href="https://o15y.com">An O15Y startup</a>
-        </p>
-      </div>
-      <div>
-        <h2>Product</h2>
-        <nav>
-          <nuxt-link to="/">Why Staart?</nuxt-link>
-          <nuxt-link to="/">Enterprise</nuxt-link>
-          <nuxt-link to="/">Security &amp; privacy</nuxt-link>
-          <nuxt-link to="/pricing">Pricing</nuxt-link>
-          <nuxt-link to="/">Staart Demo</nuxt-link>
-        </nav>
-      </div>
-      <div>
-        <h2>Use cases</h2>
-        <nav>
-          <nuxt-link to="/">Set up appointments</nuxt-link>
-          <nuxt-link to="/">Automated emails</nuxt-link>
-          <nuxt-link to="/">Personal assistant</nuxt-link>
-          <nuxt-link to="/">Calendar automation</nuxt-link>
-          <nuxt-link to="/">AI for business</nuxt-link>
-        </nav>
-      </div>
-      <div>
-        <h2>Resources</h2>
-        <nav>
-          <nuxt-link to="/">Blog</nuxt-link>
-          <nuxt-link to="/">Developer API</nuxt-link>
-          <nuxt-link to="/">Help Center</nuxt-link>
-          <nuxt-link to="/">Partners</nuxt-link>
-          <button onclick="window.agastya.open()">Accessibility</button>
-        </nav>
-      </div>
-      <div>
-        <h2>Policies</h2>
-        <nav>
-          <nuxt-link to="/">Terms of use</nuxt-link>
-          <nuxt-link to="/policies/privacy/">Privacy</nuxt-link>
-          <nuxt-link to="/">Cookies</nuxt-link>
-          <nuxt-link to="/">GDPR</nuxt-link>
-        </nav>
-      </div>
-      <div>
-        <h2>Company</h2>
-        <nav>
-          <nuxt-link to="/">About us</nuxt-link>
-          <nuxt-link to="/">O15Y</nuxt-link>
-          <nuxt-link to="/">News</nuxt-link>
-          <nuxt-link to="/">Presskit</nuxt-link>
-          <nuxt-link to="/">Careers</nuxt-link>
-        </nav>
-      </div>
+    <div class="text text--align-center">
+      &copy; Oswald Labs
     </div>
   </div>
 </template>

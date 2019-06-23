@@ -55,9 +55,9 @@ a {
   &:focus, &:active {
     outline: 0;
     border-radius: 0.2rem;
-    box-shadow: rgba(73, 34, 87, 0.46) 0px 0px 0px 1px,
+    box-shadow: rgba(56, 103, 214, 0.46) 0px 0px 0px 1px,
       rgba(0, 0, 0, 0.42) 0px 1px 1px 0px,
-      rgba(73, 34, 87, 0.42) 0px 2px 5px 0px, 0 0 0 3px rgba(121, 82, 179, 0.25);
+      rgba(56, 103, 214, 0.42) 0px 2px 5px 0px, 0 0 0 3px rgba(121, 82, 179, 0.25);
   }
 }
 
@@ -80,16 +80,16 @@ code {
   border: none;
   background: $button-background-color;
   color: $button-text-color;
-  box-shadow: rgba(73, 34, 87, 0.16) 0px 0px 0px 1px,
-    rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(73, 34, 87, 0.12) 0px 2px 5px 0px;
+  box-shadow: rgba(56, 103, 214, 0.16) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(56, 103, 214, 0.12) 0px 2px 5px 0px;
   &:hover {
     box-shadow: rgba(42, 47, 69, 0.2) 0px 0px 0px 1px,
       rgba(0, 0, 0, 0.2) 0px 1px 1px 0px, rgba(42, 47, 69, 0.2) 0px 2px 5px 0px;
   }
   &:focus, &:active {
-    box-shadow: rgba(73, 34, 87, 0.46) 0px 0px 0px 1px,
+    box-shadow: rgba(56, 103, 214, 0.46) 0px 0px 0px 1px,
       rgba(0, 0, 0, 0.42) 0px 1px 1px 0px,
-      rgba(73, 34, 87, 0.42) 0px 2px 5px 0px, 0 0 0 3px rgba(121, 82, 179, 0.25);
+      rgba(56, 103, 214, 0.42) 0px 2px 5px 0px, 0 0 0 3px rgba(121, 82, 179, 0.25);
   }
   line-height: 1;
   text-decoration: none;
@@ -137,12 +137,12 @@ code {
 .button--color-primary {
   background: $button-primary-background-color !important;
   color: $button-primary-text-color !important;
-  box-shadow: rgba(73, 34, 87, 0.16) 0px 0px 0px 1px,
-    rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(73, 34, 87, 0.12) 0px 2px 5px 0px;
+  box-shadow: rgba(56, 103, 214, 0.16) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(56, 103, 214, 0.12) 0px 2px 5px 0px;
   &:focus, &:active {
-    box-shadow: rgba(73, 34, 87, 0.46) 0px 0px 0px 1px,
+    box-shadow: rgba(56, 103, 214, 0.46) 0px 0px 0px 1px,
       rgba(0, 0, 0, 0.42) 0px 1px 1px 0px,
-      rgba(73, 34, 87, 0.42) 0px 2px 5px 0px, 0 0 0 3px rgba(121, 82, 179, 0.25);
+      rgba(56, 103, 214, 0.42) 0px 2px 5px 0px, 0 0 0 3px rgba(121, 82, 179, 0.25);
   }
 }
 .button--color-blue {
@@ -360,9 +360,9 @@ input[type="radio"] + .fake-radio {
   box-shadow: rgba(42, 47, 69, 0.16) 0px 0px 0px 1px,
     rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(42, 47, 69, 0.12) 0px 2px 5px 0px;
   &:focus, &:active {
-    box-shadow: rgba(73, 34, 87, 0.46) 0px 0px 0px 1px,
+    box-shadow: rgba(56, 103, 214, 0.46) 0px 0px 0px 1px,
       rgba(0, 0, 0, 0.42) 0px 1px 1px 0px,
-      rgba(73, 34, 87, 0.42) 0px 2px 5px 0px, 0 0 0 3px rgba(121, 82, 179, 0.25);
+      rgba(56, 103, 214, 0.42) 0px 2px 5px 0px, 0 0 0 3px rgba(121, 82, 179, 0.25);
   }
 }
 .fake-radio-container {

@@ -3,18 +3,18 @@ import NuxtConfiguration from "@nuxt/config";
 const config: NuxtConfiguration = {
   mode: "universal",
   head: {
-    title: "Staart UI",
+    title: "Oswald Labs Platform",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         hid: "description",
         name: "description",
-        content: "Frontend admin UI for Staart"
+        content: "Oswald Labs Platform"
       }
     ],
     link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/png", href: "https://oswaldlabs.com/images/pwa/favicon-32x32.png" },
       {
         rel: "stylesheet",
         href:
@@ -43,7 +43,7 @@ const config: NuxtConfiguration = {
       }
     ]
   },
-  loading: { color: "#492257" },
+  loading: { color: "#3867d6" },
   css: [],
   plugins: [
     "~/plugins/axios",
@@ -57,7 +57,7 @@ const config: NuxtConfiguration = {
   axios: {
     host:
       process.env.NODE_ENV === "production"
-        ? "staart.caprover.oswaldlabs.com"
+        ? "platform-beta.oswaldlabs.com"
         : "localhost",
     https: process.env.NODE_ENV === "production",
     port: process.env.NODE_ENV === "production" ? 443 : 7007

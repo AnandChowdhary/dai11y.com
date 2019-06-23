@@ -81,9 +81,10 @@ export default class Checkbox extends Vue {
   box-shadow: rgba(42, 47, 69, 0.16) 0px 0px 0px 1px,
     rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(42, 47, 69, 0.12) 0px 2px 5px 0px;
   &:focus {
-    box-shadow: rgba(73, 34, 87, 0.46) 0px 0px 0px 1px,
+    box-shadow: rgba(56, 103, 214, 0.46) 0px 0px 0px 1px,
       rgba(0, 0, 0, 0.42) 0px 1px 1px 0px,
-      rgba(73, 34, 87, 0.42) 0px 2px 5px 0px, 0 0 0 3px rgba(121, 82, 179, 0.25);
+      rgba(56, 103, 214, 0.42) 0px 2px 5px 0px,
+      0 0 0 3px rgba(121, 82, 179, 0.25);
   }
   border-radius: 0.2rem;
   height: 1.25rem;
@@ -100,7 +101,7 @@ export default class Checkbox extends Vue {
   top: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  color: #492257;
+  color: #3867d6;
 }
 input:checked + .fake-checkbox {
   .icon--type-check {

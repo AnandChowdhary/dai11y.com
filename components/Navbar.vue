@@ -2,7 +2,12 @@
   <div v-if="isVisible" class="navbar">
     <div class="container">
       <nuxt-link class="item" to="/">
-        <span class="item--type-logo">Staart</span>
+        <img
+          class="logo-img"
+          alt=""
+          src="https://oswaldlabs.com/images/pwa/android-chrome-192x192.png"
+        />
+        <span class="item--type-logo">Oswald Labs Platform</span>
       </nuxt-link>
       <nav v-if="isAuthenticated">
         <nuxt-link
@@ -102,29 +107,9 @@
         </span>
       </nav>
       <nav v-else>
-        <nuxt-link class="item" to="/">Solutions</nuxt-link>
-        <span>
-          <button
-            class="item"
-            aria-controls="resources"
-            :aria-expanded="(visible === 'resources').toString()"
-          >
-            Resources
-          </button>
-          <transition name="dropdown-fade">
-            <div
-              v-show="visible === 'resources'"
-              id="resources"
-              ref="dropdown-resources"
-              class="dropdown"
-            >
-              <nuxt-link class="item" to="/">Blog</nuxt-link>
-              <nuxt-link class="item" to="/">Help Center</nuxt-link>
-              <nuxt-link class="item" to="/">Developer API</nuxt-link>
-            </div>
-          </transition>
-        </span>
-        <nuxt-link class="item" to="/pricing">Pricing</nuxt-link>
+        <a href="https://oswaldlabs.com" class="item" to="/"
+          >Oswald Labs Home</a
+        >
         <nuxt-link
           v-if="$route.path !== '/auth/login'"
           class="button"
@@ -238,7 +223,6 @@ export default class Card extends Vue {
 }
 .item--type-logo {
   font-weight: bold;
-  font-style: italic;
   font-size: 125%;
 }
 
@@ -337,5 +321,11 @@ nav .item.item--type-less:hover {
   border-radius: 100%;
   position: absolute;
   transform: translateX(0.75rem) translateY(-0.75rem) scale(0.8);
+}
+.logo-img {
+  height: 1.5rem;
+  margin-top: -0.25rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
 }
 </style>
