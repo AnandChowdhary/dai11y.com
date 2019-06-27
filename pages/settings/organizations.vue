@@ -2,7 +2,7 @@
   <main>
     <h2>Memberships</h2>
     <p>
-      You can switch which team you are using Oswald Labs Platform as here.
+      You can switch which team you are using Dai11y as here.
     </p>
     <Loading v-if="loading" :message="loading" />
     <div v-else-if="memberships">
@@ -100,7 +100,7 @@
     </div>
     <h2>Create a team</h2>
     <p>
-      To invite your team to Oswald Labs Platform, get started by creating a new
+      To invite your team to Dai11y, get started by creating a new
       team.
     </p>
     <Loading v-if="isCreating" message="Creating your team" />

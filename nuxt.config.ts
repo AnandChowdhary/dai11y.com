@@ -3,14 +3,14 @@ import NuxtConfiguration from "@nuxt/config";
 const config: NuxtConfiguration = {
   mode: "universal",
   head: {
-    title: "Oswald Labs Platform",
+    title: "Dai11y",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         hid: "description",
         name: "description",
-        content: "Oswald Labs Platform"
+        content: "Dai11y"
       }
     ],
     link: [

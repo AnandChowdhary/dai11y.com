@@ -2,10 +2,10 @@
   <div>
     <header class="section section--bg-white">
       <div class="container">
-        <h1>Build accessible apps with Oswald Labs Platform.</h1>
+        <h1>Daily automated accessibility audits.</h1>
         <p>
-          Oswald Labs Platform is an open, inclusive set of APIs and tools to
-          build accessible apps.
+          Dai11y visits your websites every day and finds accessibility
+          issues, performance metrics, and more.
         </p>
         <div v-if="isAuthenticated">
           <nuxt-link

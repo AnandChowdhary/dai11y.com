@@ -3,7 +3,7 @@
     <div class="container">
       <nuxt-link class="item" to="/">
         <img alt="" src="/android-chrome-192x192.png" />
-        <span class="item--type-logo">Oswald Labs Platform</span>
+        <span class="item--type-logo">Dai11y</span>
       </nuxt-link>
       <nav v-if="isAuthenticated">
         <nuxt-link
