@@ -16,6 +16,12 @@
           :to="`/dashboard/${activeOrganization}`"
           >Dashboard</nuxt-link
         >
+        <nuxt-link
+          v-if="activeOrganization && activeOrganization !== 'undefined'"
+          class="item"
+          :to="`/dashboard/${activeOrganization}/audit-webpages`"
+          >Audits</nuxt-link
+        >
         <nuxt-link v-else class="item" to="/dashboard">Dashboard</nuxt-link>
         <nuxt-link class="item" :to="`/manage/${activeOrganization}/settings`"
           >Settings</nuxt-link
