@@ -2,7 +2,7 @@
   <div v-if="isVisible" class="navbar">
     <div class="container">
       <nuxt-link class="item" to="/">
-        <img alt="" src="/android-chrome-192x192.png" />
+        <img class="logo-img" alt="" src="/android-chrome-192x192.png" />
         <span class="item--type-logo">Dai11y</span>
       </nuxt-link>
       <nav v-if="isAuthenticated">
