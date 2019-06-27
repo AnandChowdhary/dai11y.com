@@ -172,7 +172,7 @@ export default class ManageSettings extends Vue {
         "organizationId",
         "createdAt",
         "updatedAt",
-        "lastAuditedAt"
+        "lastAuditAt"
       ].forEach(k => delete key[k]);
     }
     this.$store
