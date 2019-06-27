@@ -235,12 +235,11 @@ export default class Card extends Vue {
     font-weight: bold;
   }
 }
-.item--type-logo {
-  font-weight: bold;
+.item.item--type-logo {
   text-align: center;
   font-size: 125%;
   &.nuxt-link-exact-active {
-    font-weight: normal;
+    font-weight: normal !important;
   }
   img {
     height: 1.5rem;
