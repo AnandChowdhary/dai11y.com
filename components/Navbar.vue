@@ -2,11 +2,7 @@
   <div v-if="isVisible" class="navbar">
     <div class="container">
       <nuxt-link class="item" to="/">
-        <img
-          class="logo-img"
-          alt=""
-          src="https://oswaldlabs.com/images/pwa/android-chrome-192x192.png"
-        />
+        <img alt="" src="/android-chrome-192x192.png" />
         <span class="item--type-logo">Oswald Labs Platform</span>
       </nuxt-link>
       <nav v-if="isAuthenticated">

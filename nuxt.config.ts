@@ -14,7 +14,24 @@ const config: NuxtConfiguration = {
       }
     ],
     link: [
-      { rel: "icon", type: "image/png", href: "https://oswaldlabs.com/images/pwa/favicon-32x32.png" },
+      { rel: "mask-icon", color: "#49a7c2", href: "/safari-pinned-tab.svg" },
+      {
+        rel: "apple-touch-icon",
+        sizes: "76x76",
+        href: "/apple-touch-icon.png"
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/favicon-32x32.png"
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/favicon-16x16.png"
+      },
       {
         rel: "stylesheet",
         href:
@@ -43,7 +60,7 @@ const config: NuxtConfiguration = {
       }
     ]
   },
-  loading: { color: "#3867d6" },
+  loading: { color: "#49a7c2" },
   css: [],
   plugins: [
     "~/plugins/axios",
