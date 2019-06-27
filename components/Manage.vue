@@ -2,16 +2,16 @@
   <div :key="`manage_${$route.params.team}`" class="container">
     <aside>
       <nav>
-        <nuxt-link class="item" :to="`/manage/${$route.params.team}/settings`">
-          <font-awesome-icon class="nav-icon" icon="cog" fixed-width />
-          <span>Settings</span>
-        </nuxt-link>
         <nuxt-link
           class="item"
           :to="`/manage/${$route.params.team}/audit-webpages`"
         >
           <font-awesome-icon class="nav-icon" icon="history" fixed-width />
           <span>Audits</span>
+        </nuxt-link>
+        <nuxt-link class="item" :to="`/manage/${$route.params.team}/settings`">
+          <font-awesome-icon class="nav-icon" icon="cog" fixed-width />
+          <span>Settings</span>
         </nuxt-link>
         <nuxt-link class="item" :to="`/manage/${$route.params.team}/members`">
           <font-awesome-icon class="nav-icon" icon="users" fixed-width />
