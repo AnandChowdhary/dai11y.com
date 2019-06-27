@@ -61,7 +61,7 @@ const config: NuxtConfiguration = {
     [
       "@nuxtjs/google-analytics",
       {
-        id: "UA-79176349-16"
+        id: "UA-79176349-10"
       }
     ]
   ],
