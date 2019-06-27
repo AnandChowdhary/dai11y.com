@@ -1,10 +1,12 @@
-# Oswald Labs Platform Admin
+# ♿ Dai11y
 
-[![Travis CI](https://img.shields.io/travis/OswaldLabsOpenSource/admin.oswaldlabs.com.svg)](https://travis-ci.org/OswaldLabsOpenSource/admin.oswaldlabs.com)
-[![Netlify status](https://img.shields.io/endpoint.svg?url=https://platform.oswaldlabs.com/netlify-status/4d1e39ee-d70e-4524-a931-d2070ee8ae0e)](https://app.netlify.com/sites/oswald-labs-admin/deploys)
-[![Dependencies](https://img.shields.io/david/OswaldLabsOpenSource/admin.oswaldlabs.com.svg)](https://david-dm.org/OswaldLabsOpenSource/admin.oswaldlabs.coma)
-[![Dev dependencies](https://img.shields.io/david/dev/OswaldLabsOpenSource/admin.oswaldlabs.com.svg)](https://david-dm.org/OswaldLabsOpenSource/admin.oswaldlabs.coma)
-[![GitHub](https://img.shields.io/github/license/OswaldLabsOpenSource/admin.oswaldlabs.com.svg)](https://github.com/OswaldLabsOpenSource/admin.oswaldlabs.com/blob/master/LICENSE)
+Daily accessibility audits for your website, powered by [Oswald Labs Platform](https://oswaldlabs.com/platform/).
+
+[![Travis CI](https://img.shields.io/travis/AnandChowdhary/dai11y.com.svg)](https://travis-ci.org/AnandChowdhary/dai11y.com)
+[![Netlify status](https://img.shields.io/endpoint.svg?url=https://platform.oswaldlabs.com/netlify-status/5cd50e62-890b-475d-9994-4cacfc44d4c1)](https://app.netlify.com/sites/dai11y/deploys)
+[![Dependencies](https://img.shields.io/david/AnandChowdhary/dai11y.com.svg)](https://david-dm.org/AnandChowdhary/dai11y.coma)
+[![Dev dependencies](https://img.shields.io/david/dev/AnandChowdhary/dai11y.com.svg)](https://david-dm.org/AnandChowdhary/dai11y.coma)
+[![GitHub](https://img.shields.io/github/license/AnandChowdhary/dai11y.com.svg)](https://github.com/AnandChowdhary/dai11y.com/blob/master/LICENSE)
 ![Type definitions](https://img.shields.io/badge/types-TypeScript-blue.svg)
 
 ## 🛠 Usage
