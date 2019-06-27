@@ -127,10 +127,10 @@
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { mapGetters } from "vuex";
-import Notifications from "@/components/Notifications.vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBell, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import Notifications from "@/components/Notifications.vue";
 library.add(faBell, faQuestionCircle);
 
 @Component({
@@ -206,6 +206,14 @@ export default class Card extends Vue {
   justify-content: space-between;
   align-items: center;
 }
+@media (max-width: 500px) {
+  .container {
+    nav {
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+}
 
 .item {
   color: inherit;
@@ -223,7 +231,17 @@ export default class Card extends Vue {
 }
 .item--type-logo {
   font-weight: bold;
+  text-align: center;
   font-size: 125%;
+  &.nuxt-link-exact-active {
+    font-weight: normal;
+  }
+  img {
+    height: 1.5rem;
+    margin-top: -0.2rem;
+    margin-right: 0.25rem;
+    vertical-align: middle;
+  }
 }
 
 nav span {

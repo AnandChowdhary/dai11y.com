@@ -233,7 +233,7 @@
             required
             @input="val => (disableText = val)"
           />
-          <button class="button button--color-danger-cta">
+          <button class="button button--color-danger button--state-cta">
             Yes, disable 2FA
           </button>
           <button type="button" class="button" @click="showDisable = false">
@@ -248,21 +248,7 @@
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { mapGetters } from "vuex";
-import Loading from "@/components/Loading.vue";
-import TimeAgo from "@/components/TimeAgo.vue";
-import Input from "@/components/form/Input.vue";
-import Select from "@/components/form/Select.vue";
-import Confirm from "@/components/Confirm.vue";
-import Modal from "@/components/Modal.vue";
 import UAParser from "ua-parser-js";
-import {
-  Email,
-  SecurityEvent,
-  BackupCode,
-  SecurityEvents
-} from "@/types/settings";
-import { User } from "@/types/auth";
-import en from "@/locales/en";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -271,6 +257,20 @@ import {
   faSync,
   faArrowDown
 } from "@fortawesome/free-solid-svg-icons";
+import Loading from "@/components/Loading.vue";
+import TimeAgo from "@/components/TimeAgo.vue";
+import Input from "@/components/form/Input.vue";
+import Select from "@/components/form/Select.vue";
+import Confirm from "@/components/Confirm.vue";
+import Modal from "@/components/Modal.vue";
+import {
+  Email,
+  SecurityEvent,
+  BackupCode,
+  SecurityEvents
+} from "@/types/settings";
+import { User } from "@/types/auth";
+import en from "@/locales/en";
 const text = en.securityEvents;
 library.add(faExclamationCircle, faCheckCircle, faSync, faArrowDown);
 

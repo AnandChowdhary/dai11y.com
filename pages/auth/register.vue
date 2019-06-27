@@ -44,7 +44,7 @@
         </button>
       </form>
     </Card>
-    <p v-if="!completedRegistration">
+    <p v-if="!completedRegistration" class="text text--mt-1">
       Already have an account?
       <nuxt-link to="/auth/login">Login to your account</nuxt-link>
     </p>
@@ -53,10 +53,10 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import { mapGetters } from "vuex";
 import Card from "@/components/Card.vue";
 import LargeMessage from "@/components/LargeMessage.vue";
 import Input from "@/components/form/Input.vue";
-import { mapGetters } from "vuex";
 
 @Component({
   components: {

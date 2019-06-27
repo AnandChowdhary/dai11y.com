@@ -5,14 +5,16 @@
     <LargeMessage
       v-if="hasError"
       heading="That's not good"
-      text="We got an error in verifying your login with Google. This happens if you revoked our access to your account."
+      text="We got an error in verifying this magic link. Please make sure this link isn't expired."
       cta-text="Go to login"
+      img="undraw_cancel_u1it.svg"
       cta-to="/auth/login"
     />
     <LargeMessage
       v-else
+      img="undraw_loading_frh4.svg"
       heading="Just a moment"
-      text="We're verifying your account and you should be logged in any second now."
+      text="We're verifying this login and you should be on your way in just another moment."
     />
   </main>
 </template>
@@ -25,28 +27,32 @@ import LargeMessage from "@/components/LargeMessage.vue";
 @Component({
   components: {
     LargeMessage
-  }
+  },
+  computed: mapGetters({
+    isAuthenticated: "auth/isAuthenticated"
+  })
 })
 export default class Token extends Vue {
   hasError = false;
+  isAuthenticated!: boolean;
   hasSuccess = false;
   ctaText = "Go to login";
   ctaTo = "/auth/login";
+  redirect: string | undefined = "";
+  private created() {
+    this.redirect = this.$route.query.redirect as string | undefined;
+    if (this.isAuthenticated)
+      return this.$router.replace(this.redirect || "/dashboard");
+  }
   private mounted() {
-    const code = this.$route.query.code;
-    if (this.$store.state.auth.isAuthenticated) {
-      this.ctaText = "Go to dashboard";
-      this.ctaTo = "/";
-    }
     this.$store
-      .dispatch(`auth/loginWithGoogle`, { code })
+      .dispatch("auth/setAuthTokens", this.$route.query)
       .then(response => {
         if (response === "2fa") return this.$router.push("/auth/2fa");
-        if (this.$store.state.auth.isAuthenticated)
-          return this.$router.replace("/dashboard");
+        this.$router.push(this.redirect || "/dashboard");
       })
       .catch(error => {
-        this.hasError = true;
+        this.hasError = false;
         throw new Error(error);
       });
   }

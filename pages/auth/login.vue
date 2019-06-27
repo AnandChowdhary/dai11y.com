@@ -30,7 +30,7 @@
           Login to your account
         </button>
         <no-ssr>
-          <div class="row section section--mt-1">
+          <div class="row text text--mt-1">
             <button
               v-for="service in ['Salesforce', 'Github', 'Facebook']"
               :key="`login_${service}`"
@@ -61,7 +61,7 @@
         </no-ssr>
       </form>
     </Card>
-    <div class="row section section--mt-1">
+    <div class="row text text--mt-1">
       <nuxt-link to="/auth/forgot">Forgot your password?</nuxt-link>
       <nuxt-link to="/auth/register" style="text-align: right"
         >Create an account</nuxt-link
@@ -108,10 +108,6 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Card from "@/components/Card.vue";
-import Modal from "@/components/Modal.vue";
-import Loading from "@/components/Loading.vue";
-import Input from "@/components/form/Input.vue";
 import { mapGetters } from "vuex";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -127,6 +123,10 @@ import {
   faGithub
 } from "@fortawesome/free-brands-svg-icons";
 import { faDotCircle, faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import Input from "@/components/form/Input.vue";
+import Loading from "@/components/Loading.vue";
+import Modal from "@/components/Modal.vue";
+import Card from "@/components/Card.vue";
 library.add(
   faGoogle,
   faSalesforce,

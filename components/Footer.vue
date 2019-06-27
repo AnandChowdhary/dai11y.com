@@ -37,7 +37,7 @@ export default class Footer extends Vue {
 
 <style lang="scss" scoped>
 .footer {
-  padding: 4rem 0;
+  padding-bottom: 4rem;
   font-size: 90%;
 }
 .logo {
@@ -56,6 +56,19 @@ export default class Footer extends Vue {
   }
   > div {
     flex-grow: 1;
+  }
+}
+@media (max-width: 900px) {
+  .container {
+    flex-wrap: wrap;
+    > div,
+    .larger {
+      width: 50%;
+      margin-bottom: 2rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }
 h2 {
@@ -83,6 +96,24 @@ nav {
   text-align: center;
   background-color: #fff;
   padding: 1rem 0;
-  margin-bottom: 4rem;
+}
+.hero p {
+  font-size: 110%;
+}
+.links {
+  padding-top: 4rem;
+}
+.item--type-logo {
+  text-align: center;
+  font-size: 125%;
+  &.nuxt-link-exact-active {
+    font-weight: normal;
+  }
+  img {
+    height: 1.5rem;
+    margin-top: -0.2rem;
+    margin-right: 0.25rem;
+    vertical-align: middle;
+  }
 }
 </style>

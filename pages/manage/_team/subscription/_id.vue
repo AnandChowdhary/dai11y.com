@@ -79,7 +79,7 @@
             </tr>
           </tbody>
         </table>
-        <div v-if="!subscription.cancel_at" class="section section--mt-2">
+        <div v-if="!subscription.cancel_at" class="text text--mt-2">
           <button
             class="button button--color-danger"
             @click="() => (showDelete = true)"
@@ -87,7 +87,7 @@
             Cancel subscription
           </button>
         </div>
-        <div v-else class="card card--type-padded section section--mt-2">
+        <div v-else class="card card--type-padded text text--mt-2">
           <h2>Scheduled for cancelation</h2>
           <p>
             This subscription will be cancelled at
@@ -107,7 +107,7 @@
           subscription will be permanently deleted.
         </p>
         <button
-          class="button button--color-danger-cta"
+          class="button button--color-danger button--state-cta"
           @click="cancelSubscription"
         >
           Yes, cancel
@@ -123,15 +123,7 @@
 <script lang="ts">
 import { Component, Vue, Watch } from "vue-property-decorator";
 import { mapGetters } from "vuex";
-import Loading from "@/components/Loading.vue";
-import TimeAgo from "@/components/TimeAgo.vue";
-import Confirm from "@/components/Confirm.vue";
-import LargeMessage from "@/components/LargeMessage.vue";
-import Input from "@/components/form/Input.vue";
-import Checkbox from "@/components/form/Checkbox.vue";
-import Select from "@/components/form/Select.vue";
 import { getAllCountries } from "countries-and-timezones";
-import { User } from "@/types/auth";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -141,6 +133,14 @@ import {
   faSync
 } from "@fortawesome/free-solid-svg-icons";
 import { subscriptions } from "stripe";
+import Loading from "@/components/Loading.vue";
+import TimeAgo from "@/components/TimeAgo.vue";
+import Confirm from "@/components/Confirm.vue";
+import LargeMessage from "@/components/LargeMessage.vue";
+import Input from "@/components/form/Input.vue";
+import Checkbox from "@/components/form/Checkbox.vue";
+import Select from "@/components/form/Select.vue";
+import { User } from "@/types/auth";
 import { Subscriptions, emptyPagination } from "@/types/manage";
 library.add(faFileInvoiceDollar, faPencilAlt, faArrowDown, faSync);
 

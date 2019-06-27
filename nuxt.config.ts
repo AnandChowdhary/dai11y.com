@@ -19,6 +19,10 @@ const config: NuxtConfiguration = {
         rel: "stylesheet",
         href:
           "https://cdnjs.cloudflare.com/ajax/libs/balloon-css/1.0.0/balloon.min.css"
+      },
+      {
+        rel: "stylesheet",
+        href: "https://use.typekit.net/mov5itj.css"
       }
     ],
     script: [
@@ -31,10 +35,6 @@ const config: NuxtConfiguration = {
         type: "text/javascript",
         src: "https://public-cdn.oswaldlabs.com/focus-visible.js",
         async: true
-      },
-      {
-        type: "text/javascript",
-        src: "https://js.stripe.com/v3/"
       },
       {
         type: "text/javascript",
@@ -53,7 +53,18 @@ const config: NuxtConfiguration = {
     "~/plugins/filters",
     { src: "~/plugins/vuex-persist", ssr: false }
   ],
-  modules: ["@nuxtjs/axios", "@nuxtjs/pwa", "@nuxtjs/markdownit", "@bazzite/nuxt-netlify"],
+  modules: [
+    "@nuxtjs/axios",
+    "@nuxtjs/pwa",
+    "@nuxtjs/markdownit",
+    "@bazzite/nuxt-netlify",
+    [
+      "@nuxtjs/google-analytics",
+      {
+        id: "UA-79176349-16"
+      }
+    ]
+  ],
   axios: {
     host:
       process.env.NODE_ENV === "production"
