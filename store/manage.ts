@@ -18,7 +18,9 @@ export const state = (): RootState => ({
   apiKeys: {},
   apiKey: {},
   auditWebpages: {},
-  auditWebpage: {}
+  auditWebpage: {},
+  audits: {},
+  audit: {}
 });
 
 export const mutations: MutationTree<RootState> = {
@@ -148,6 +150,26 @@ export const mutations: MutationTree<RootState> = {
     currentAuditWebpages[team] = currentAuditWebpages[team] || {};
     currentAuditWebpages[team][id] = { ...auditWebpage };
     Vue.set(state, "auditWebpage", currentAuditWebpages);
+  },
+  setAudits(state: RootState, { team, audits, start, next, id }): void {
+    const currentAudits = state.audits;
+    currentAudits[`${team}${id}`] = currentAudits[`${team}${id}`] || emptyPagination;
+    if (start) {
+      currentAudits[`${team}${id}`].data = [
+        ...currentAudits[`${team}${id}`].data,
+        ...audits.data
+      ];
+    } else {
+      currentAudits[`${team}${id}`].data = audits.data;
+    }
+    currentAudits[`${team}${id}`].next = next;
+    Vue.set(state, "audits", currentAudits);
+  },
+  setAudit(state: RootState, { team, audit, id, auditId }): void {
+    const currentAudits = state.audit;
+    currentAudits[`${team}${id}`] = currentAudits[`${team}${id}`] || {};
+    currentAudits[`${team}${id}`][auditId] = { ...audit };
+    Vue.set(state, "audit", currentAudits);
   },
   setPricingPlans(state: RootState, pricingPlans: any): void {
     Vue.set(state, "pricingPlans", pricingPlans);
@@ -404,6 +426,20 @@ export const actions: ActionTree<RootState, RootState> = {
     );
     return dispatch("getAuditWebpage", context);
   },
+  async getAudits({ commit }, { team, id, start = 0 }) {
+    const audits: any = (await this.$axios.get(
+      `/organizations/${team}/audit-webpages/${id}/audits?start=${start}&sort=desc`
+    )).data;
+    commit("setAudits", { team, audits, start, next: audits.next, id });
+    return audits;
+  },
+  async getAudit({ commit }, { team, id, auditId }) {
+    const audit: any = (await this.$axios.get(
+      `/organizations/${team}/audit-webpages/${id}/audits/${auditId}`
+    )).data;
+    commit("setAudit", { team, audit, id, auditId });
+    return audit;
+  },
   async getEvents({ commit, rootGetters }) {
     const org = rootGetters["auth/activeOrganization"];
     const organizationId = org.organizationId;
@@ -436,5 +472,8 @@ export const getters: GetterTree<RootState, RootState> = {
   auditWebpages: state => (team: string) => state.auditWebpages[team],
   auditWebpage: state => (team: string, auditWebpage: string) =>
       state.auditWebpage[team] && state.auditWebpage[team][auditWebpage],
+  audits: state => (team: string, id: number) => state.audits[`${team}${id}`],
+  audit: state => (team: string, id: number, audit: string) =>
+      state.audit[`${team}${id}`] && state.audit[`${team}${id}`][audit],
   organization: state => (team: string) => state.organizations[team]
 };

@@ -36,6 +36,7 @@
             <tr>
               <th>URL</th>
               <th>Repeats</th>
+              <th>Last audit</th>
               <th></th>
             </tr>
           </thead>
@@ -46,6 +47,7 @@
             >
               <td>{{ auditWebpage.url }}</td>
               <td>{{ repeatEvery[auditWebpage.repeatEvery] }}</td>
+              <td><TimeAgo :date="auditWebpage.lastAuditAt" /></td>
               <td class="text text--align-right">
                 <router-link
                   :to="

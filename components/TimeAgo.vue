@@ -1,5 +1,6 @@
 <template>
   <timeago
+    v-if="date"
     :title="safeValue"
     class="time-ago"
     :datetime="date"
