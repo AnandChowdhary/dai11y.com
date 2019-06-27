@@ -124,8 +124,8 @@
       </div>
       <h2>Create API key</h2>
       <p>
-        You can use API keys to programmatically access Dai11y in
-        your applications.
+        You can use API keys to programmatically access Dai11y in your
+        applications.
       </p>
       <form @submit.prevent="createApiKey">
         <CheckList

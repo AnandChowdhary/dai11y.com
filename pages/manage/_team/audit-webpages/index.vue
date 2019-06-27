@@ -109,8 +109,8 @@
       </div>
       <h2>Create audit</h2>
       <p>
-        You can use audits to programmatically access Dai11y in
-        your applications.
+        You can use audits to programmatically access Dai11y in your
+        applications.
       </p>
       <form @submit.prevent="createAuditWebpage">
         <Input

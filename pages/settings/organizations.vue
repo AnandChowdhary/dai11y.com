@@ -100,8 +100,7 @@
     </div>
     <h2>Create a team</h2>
     <p>
-      To invite your team to Dai11y, get started by creating a new
-      team.
+      To invite your team to Dai11y, get started by creating a new team.
     </p>
     <Loading v-if="isCreating" message="Creating your team" />
     <form

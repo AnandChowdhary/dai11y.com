@@ -1,9 +1,9 @@
 <template>
   <div v-if="isVisible" class="navbar">
     <div class="container">
-      <nuxt-link class="item" to="/">
+      <nuxt-link class="item item--type-logo" to="/">
         <img class="logo-img" alt="" src="/android-chrome-192x192.png" />
-        <span class="item--type-logo">Dai11y</span>
+        <span>Dai11y</span>
       </nuxt-link>
       <nav v-if="isAuthenticated">
         <nuxt-link
@@ -13,7 +13,9 @@
           >Audits</nuxt-link
         >
         <nuxt-link v-else class="item" to="/dashboard">Dashboard</nuxt-link>
-        <nuxt-link class="item" :to="`/manage/${activeOrganization}/audit-webpages`"
+        <nuxt-link
+          class="item"
+          :to="`/manage/${activeOrganization}/audit-webpages`"
           >Settings</nuxt-link
         >
         <span>
@@ -103,8 +105,13 @@
         </span>
       </nav>
       <nav v-else>
-        <a href="https://oswaldlabs.com" class="item" to="/"
-          >Oswald Labs Home</a
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://oswaldlabs.com"
+          class="item"
+          to="/"
+          >Oswald Labs</a
         >
         <nuxt-link
           v-if="$route.path !== '/auth/login'"
@@ -231,12 +238,6 @@ export default class Card extends Vue {
   &.nuxt-link-exact-active {
     font-weight: normal !important;
   }
-  img {
-    height: 1.5rem;
-    margin-top: -0.2rem;
-    margin-right: 0.25rem;
-    vertical-align: middle;
-  }
 }
 
 nav span {
@@ -336,7 +337,7 @@ nav .item.item--type-less:hover {
   transform: translateX(0.75rem) translateY(-0.75rem) scale(0.8);
 }
 .logo-img {
-  height: 1.5rem;
+  height: 2rem;
   margin-top: -0.25rem;
   margin-right: 0.5rem;
   vertical-align: middle;

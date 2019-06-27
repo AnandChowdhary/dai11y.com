@@ -2,27 +2,153 @@
   <div>
     <header class="section section--bg-white">
       <div class="container">
-        <h1>Daily automated accessibility audits.</h1>
-        <p>
-          Dai11y visits your websites every day and finds accessibility
-          issues, performance metrics, and more.
-        </p>
-        <div v-if="isAuthenticated">
-          <nuxt-link
-            class="button button--size-large button--color-primary"
-            to="/dashboard"
-            >Go to your dashboard &rarr;</nuxt-link
-          >
-        </div>
-        <div v-else>
-          <nuxt-link
-            class="button button--size-large button--color-primary"
-            to="/auth/register"
-            >Get started for free &rarr;</nuxt-link
-          >
+        <div class="row">
+          <div>
+            <h1>Daily accessibility audits for your site.</h1>
+            <p style="max-width: 500px">
+              Dai11y automates website auditing with a powerful monitoring
+              platform powered by Google's Lighthouse.
+            </p>
+            <div v-if="isAuthenticated">
+              <nuxt-link
+                class="button button--size-large button--color-primary"
+                to="/dashboard"
+                >Go to your dashboard &rarr;</nuxt-link
+              >
+            </div>
+            <div v-else>
+              <nuxt-link
+                class="button button--size-large button--color-primary"
+                to="/auth/register"
+                >Get started for free &rarr;</nuxt-link
+              >
+            </div>
+          </div>
+          <img class="b" alt="" src="/images/undraw_product_tour_foyt.svg" />
         </div>
       </div>
     </header>
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="row text text--align-center main-features">
+            <div>
+              <font-awesome-icon
+                class="icon icon--size-lg"
+                icon="history"
+                fixed-width
+              />
+              <h3>Automated audits</h3>
+              <p>
+                Set up hourly, daily, weekly, or monthly audits for your
+                websites.
+              </p>
+            </div>
+            <div>
+              <font-awesome-icon
+                class="icon icon--size-lg"
+                :icon="['fab', 'accessible-icon']"
+                fixed-width
+              />
+              <h3>Smart suggestions</h3>
+              <p>
+                Find out how to improve your site with intelligent suggestions.
+              </p>
+            </div>
+            <div>
+              <font-awesome-icon
+                class="icon icon--size-lg"
+                icon="bell"
+                fixed-width
+              />
+              <h3>Notifications</h3>
+              <p>
+                Receive alerts when errors are found via email or Slack.
+              </p>
+            </div>
+            <div>
+              <font-awesome-icon
+                class="icon icon--size-lg"
+                icon="laptop-code"
+                fixed-width
+              />
+              <h3>Developer API</h3>
+              <p>
+                Set up custom audits, integrate with CI/CD, and more with our
+                API.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section section--bg-white">
+        <div class="container text text--align-center">
+          <h2>Audit your site for free</h2>
+          <div v-if="result && result.data">
+            <div class="row">
+              <div>
+                <div class="score">{{ result.data.scorePerformance }}</div>
+                <div>Performance</div>
+              </div>
+              <div>
+                <div class="score">{{ result.data.scoreAccessibility }}</div>
+                <div>Accessibility</div>
+              </div>
+              <div>
+                <div class="score">{{ result.data.scoreBestPractices }}</div>
+                <div>Best Practices</div>
+              </div>
+              <div>
+                <div class="score">{{ result.data.scoreSeo }}</div>
+                <div>SEO</div>
+              </div>
+              <div>
+                <div class="score">{{ result.data.scorePwa }}</div>
+                <div>Progressive Web App</div>
+              </div>
+            </div>
+            <div class="text text--mt-2">
+              <router-link
+                to="/auth/register"
+                class="button button--color-primary button--size-large"
+                >See recommendations &rarr;</router-link
+              >
+            </div>
+          </div>
+          <div v-else-if="result">
+            <p>An error occurred and we couldn't perform this audit.</p>
+            <button class="button" @click.prevent="result = null">
+              Try again
+            </button>
+          </div>
+          <form v-else class="big" @submit.prevent="audit">
+            <label>
+              <span>Webpage URL</span>
+              <input
+                v-model="url"
+                placeholder="Enter a URL"
+                type="url"
+                :disabled="!!auditing"
+              />
+            </label>
+            <button class="button button--color-primary" :disabled="!!auditing">
+              <span v-if="!!auditing"
+                >{{ auditing }}... ({{ percent }}%)...</span
+              >
+              <span v-else>Audit my site &rarr;</span>
+            </button>
+          </form>
+          <!-- <div class="row">
+            <div>
+              <img
+                alt="Audit score"
+                src="https://img.shields.io/badge/accessibility-100%2F100-success.svg"
+              />
+            </div>
+          </div> -->
+        </div>
+      </section>
+    </main>
   </div>
 </template>
 
@@ -32,51 +158,12 @@ import { mapGetters } from "vuex";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
-  faSync,
-  faUserLock,
-  faFingerprint,
-  faCode,
-  faGlobeEurope,
-  faShieldAlt,
-  faToggleOn,
-  faFile,
-  faLanguage,
-  faRocket,
-  faMagic,
-  faCreditCard,
-  faUsers,
-  faLaptop,
-  faHandsHelping,
-  faCalendar,
-  faImage
+  faBell,
+  faLaptopCode,
+  faHistory
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faNodeJs,
-  faVuejs,
-  faAccessibleIcon
-} from "@fortawesome/free-brands-svg-icons";
-library.add(
-  faSync,
-  faMagic,
-  faUserLock,
-  faCalendar,
-  faImage,
-  faHandsHelping,
-  faFingerprint,
-  faCode,
-  faUsers,
-  faLaptop,
-  faGlobeEurope,
-  faShieldAlt,
-  faNodeJs,
-  faVuejs,
-  faToggleOn,
-  faFile,
-  faLanguage,
-  faAccessibleIcon,
-  faRocket,
-  faCreditCard
-);
+import { faAccessibleIcon } from "@fortawesome/free-brands-svg-icons";
+library.add(faBell, faLaptopCode, faAccessibleIcon, faHistory);
 
 @Component({
   computed: mapGetters({
@@ -86,7 +173,51 @@ library.add(
     FontAwesomeIcon
   }
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  url = "";
+  auditing = "";
+  percent = 0;
+  auditId?: string;
+  result: any = null;
+
+  private audit() {
+    this.auditing = "Launching a browser";
+    this.$axios
+      .get("https://api.dai11y.com/api/audit/?url=https://example.com")
+      .then(result => {
+        this.auditId = result.data.id;
+      });
+    const interval = window.setInterval(() => {
+      if (this.percent < 100) {
+        this.percent++;
+        if (this.percent > 20) this.auditing = "Visiting your site";
+        if (this.percent > 40) this.auditing = "Looking at links and colors";
+        if (this.percent > 60) this.auditing = "Determining ARIA attributes";
+        if (this.percent > 80) this.auditing = "Thinking of recommendations";
+        if (this.percent > 99) this.auditing = "Complete! Reporting";
+      } else {
+        window.clearInterval(interval);
+        this.finishAudit();
+      }
+    }, 250);
+  }
+
+  private finishAudit() {
+    this.url = "";
+    this.$axios
+      .get(`https://api.dai11y.com/api/audit/${this.auditId}`)
+      .then(result => {
+        if (parseInt(result.data.status) !== 0) {
+          this.result = result;
+          console.log(JSON.stringify(result));
+        } else {
+          setTimeout(() => {
+            this.finishAudit();
+          }, 5000);
+        }
+      });
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -100,7 +231,7 @@ header {
 h2 {
   font-weight: 300;
   font-size: 200%;
-  margin-bottom: 5rem;
+  margin-bottom: 2.5rem;
 }
 .icon-circle {
   background-color: #fff;
@@ -110,7 +241,7 @@ h2 {
   text-align: center;
   line-height: 3.5rem;
   font-size: 150%;
-  border-radius: 100%;
+  border-radius: 80%;
 }
 dt {
   font-size: 125%;
@@ -166,5 +297,28 @@ dt {
     width: 100%;
     margin-bottom: -5rem;
   }
+}
+.big {
+  text-align: center;
+  font-size: 125%;
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  input {
+    font: inherit;
+    font-weight: normal;
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 1rem auto;
+    padding: 0.5rem 1rem;
+    border-radius: 0.2rem;
+    border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  }
+}
+.score {
+  font-weight: 300;
+  font-size: 500%;
 }
 </style>
