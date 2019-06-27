@@ -16,7 +16,9 @@ export const state = (): RootState => ({
   sources: {},
   source: {},
   apiKeys: {},
-  apiKey: {}
+  apiKey: {},
+  auditWebpages: {},
+  auditWebpage: {}
 });
 
 export const mutations: MutationTree<RootState> = {
@@ -127,6 +129,26 @@ export const mutations: MutationTree<RootState> = {
     currentApiKeys[team][id] = { ...apiKey };
     Vue.set(state, "apiKey", currentApiKeys);
   },
+  setAuditWebpages(state: RootState, { team, auditWebpages, start, next }): void {
+    const currentAuditWebpages = state.auditWebpages;
+    currentAuditWebpages[team] = currentAuditWebpages[team] || emptyPagination;
+    if (start) {
+      currentAuditWebpages[team].data = [
+        ...currentAuditWebpages[team].data,
+        ...auditWebpages.data
+      ];
+    } else {
+      currentAuditWebpages[team].data = auditWebpages.data;
+    }
+    currentAuditWebpages[team].next = next;
+    Vue.set(state, "auditWebpages", currentAuditWebpages);
+  },
+  setAuditWebpage(state: RootState, { team, auditWebpage, id }): void {
+    const currentAuditWebpages = state.auditWebpage;
+    currentAuditWebpages[team] = currentAuditWebpages[team] || {};
+    currentAuditWebpages[team][id] = { ...auditWebpage };
+    Vue.set(state, "auditWebpage", currentAuditWebpages);
+  },
   setPricingPlans(state: RootState, pricingPlans: any): void {
     Vue.set(state, "pricingPlans", pricingPlans);
   },
@@ -148,6 +170,8 @@ export const mutations: MutationTree<RootState> = {
     delete state.pricingPlans;
     delete state.apiKeys;
     delete state.apiKey;
+    delete state.auditWebpages;
+    delete state.auditWebpage;
   }
 };
 
@@ -344,6 +368,42 @@ export const actions: ActionTree<RootState, RootState> = {
     );
     return dispatch("getApiKey", context);
   },
+  async getAuditWebpages({ commit }, { team, start = 0 }) {
+    const auditWebpages: any = (await this.$axios.get(
+      `/organizations/${team}/audit-webpages?start=${start}`
+    )).data;
+    commit("setAuditWebpages", { team, auditWebpages, start, next: auditWebpages.next });
+    return auditWebpages;
+  },
+  async getAuditWebpage({ commit }, { team, id }) {
+    const auditWebpage: any = (await this.$axios.get(
+      `/organizations/${team}/audit-webpages/${id}`
+    )).data;
+    commit("setAuditWebpage", { team, auditWebpage, id });
+    return auditWebpage;
+  },
+  async createAuditWebpage({ dispatch }, context) {
+    const data = { ...context };
+    delete data.team;
+    await this.$axios.put(`/organizations/${context.team}/audit-webpages`, data);
+    return dispatch("getAuditWebpages", { team: context.team });
+  },
+  async deleteAuditWebpage({ dispatch }, context) {
+    await this.$axios.delete(
+      `/organizations/${context.team}/audit-webpages/${context.id}`
+    );
+    return dispatch("getAuditWebpages", { team: context.team });
+  },
+  async updateAuditWebpage({ dispatch }, context) {
+    const data = { ...context };
+    delete data.team;
+    delete data.id;
+    await this.$axios.patch(
+      `/organizations/${context.team}/audit-webpages/${context.id}`,
+      data
+    );
+    return dispatch("getAuditWebpage", context);
+  },
   async getEvents({ commit, rootGetters }) {
     const org = rootGetters["auth/activeOrganization"];
     const organizationId = org.organizationId;
@@ -373,5 +433,8 @@ export const getters: GetterTree<RootState, RootState> = {
   apiKeys: state => (team: string) => state.apiKeys[team],
   apiKey: state => (team: string, apiKey: string) =>
     state.apiKey[team] && state.apiKey[team][apiKey],
+  auditWebpages: state => (team: string) => state.auditWebpages[team],
+  auditWebpage: state => (team: string, auditWebpage: string) =>
+      state.auditWebpage[team] && state.auditWebpage[team][auditWebpage],
   organization: state => (team: string) => state.organizations[team]
 };

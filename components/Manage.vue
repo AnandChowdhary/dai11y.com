@@ -6,6 +6,13 @@
           <font-awesome-icon class="nav-icon" icon="cog" fixed-width />
           <span>Settings</span>
         </nuxt-link>
+        <nuxt-link
+          class="item"
+          :to="`/manage/${$route.params.team}/audit-webpages`"
+        >
+          <font-awesome-icon class="nav-icon" icon="history" fixed-width />
+          <span>Audits</span>
+        </nuxt-link>
         <nuxt-link class="item" :to="`/manage/${$route.params.team}/members`">
           <font-awesome-icon class="nav-icon" icon="users" fixed-width />
           <span>Team</span>
@@ -72,7 +79,8 @@ import {
   faBoxOpen,
   faUser,
   faAddressCard,
-  faCode
+  faCode,
+  faHistory
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
   faDatabase,
@@ -81,7 +89,8 @@ library.add(
   faBoxOpen,
   faUser,
   faCode,
-  faAddressCard
+  faAddressCard,
+  faHistory
 );
 
 @Component({

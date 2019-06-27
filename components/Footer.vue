@@ -37,7 +37,7 @@ export default class Footer extends Vue {
 
 <style lang="scss" scoped>
 .footer {
-  padding-bottom: 4rem;
+  padding: 2rem 0;
   font-size: 90%;
 }
 .logo {

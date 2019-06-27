@@ -5,14 +5,14 @@
       <div class="row">
         <div>
           <nuxt-link
-            :to="`/manage/${$route.params.team}/api-keys`"
+            :to="`/manage/${$route.params.team}/audit-webpages`"
             aria-label="Back"
             data-balloon-pos="down"
             class="button button--type-icon button--type-back"
           >
             <font-awesome-icon class="icon" icon="arrow-left" fixed-width />
           </nuxt-link>
-          <h1>API keys</h1>
+          <h1>Audit</h1>
         </div>
         <div class="text text--align-right">
           <button
@@ -26,51 +26,48 @@
         </div>
       </div>
       <form
-        v-if="apiKey"
-        v-meta-ctrl-enter="updateApiKey"
-        @submit.prevent="updateApiKey"
+        v-if="auditWebpage"
+        v-meta-ctrl-enter="updateAuditWebpage"
+        @submit.prevent="updateAuditWebpage"
       >
-        <CheckList
-          label="API restrictions"
-          :options="apiRestrictions"
-          :value="apiKey.apiRestrictions"
-          @input="val => (apiKey.apiRestrictions = val)"
+        <Input
+          type="url"
+          :value="auditWebpage.url"
+          label="URL"
+          placeholder="Enter new audit webpage's URL"
+          required
+          @input="val => (auditWebpage.url = val)"
         />
-        <CommaList
-          label="IP restrictions"
-          :value="apiKey.ipRestrictions"
-          placeholder="Enter an IP address or CIDR, e.g., 192.168.1.1/42"
-          @input="val => (apiKey.ipRestrictions = val)"
+        <Select
+          :value="auditWebpage.repeatEvery"
+          label="Repeat"
+          placeholder="Select how often to audit"
+          :options="repeatEvery"
+          @input="val => (auditWebpage.repeatEvery = val)"
         />
-        <CommaList
-          label="Referrer restrictions"
-          :value="apiKey.referrerRestrictions"
-          placeholder="Enter a referrer URL, e.g., http*://*.example.com"
-          @input="val => (apiKey.referrerRestrictions = val)"
-        />
-        <button class="button">Update API key</button>
+        <button class="button">Update audit</button>
         <button
           type="button"
           class="button button--color-danger"
           style="margin-left: 0.5rem"
-          @click.prevent="showDelete = apiKey"
+          @click.prevent="showDelete = auditWebpage"
         >
-          Delete API key
+          Delete audit
         </button>
       </form>
     </div>
     <transition name="modal">
       <Confirm v-if="showDelete" :on-close="() => (showDelete = false)">
-        <h2>Are you sure you want to delete this API key?</h2>
+        <h2>Are you sure you want to delete this audit?</h2>
         <p>
-          Deleting an API key is not reversible, and you'll need to update any
+          Deleting an audit is not reversible, and you'll need to update any
           apps using this key.
         </p>
         <button
           class="button button--color-danger button--state-cta"
-          @click="deleteApiKey(showDelete.apiKey)"
+          @click="deleteAuditWebpage(showDelete.id)"
         >
-          Yes, delete API key
+          Yes, delete audit
         </button>
         <button type="button" class="button" @click="showDelete = false">
           No, don't delete
@@ -99,14 +96,11 @@ import Loading from "@/components/Loading.vue";
 import Confirm from "@/components/Confirm.vue";
 import TimeAgo from "@/components/TimeAgo.vue";
 import LargeMessage from "@/components/LargeMessage.vue";
-import CheckList from "@/components/form/CheckList.vue";
-import CommaList from "@/components/form/CommaList.vue";
+import Input from "@/components/form/Input.vue";
 import Checkbox from "@/components/form/Checkbox.vue";
 import Select from "@/components/form/Select.vue";
 import { User } from "@/types/auth";
-import { ApiKeys, emptyPagination, ApiKey } from "@/types/manage";
-import translations from "@/locales/en";
-const apiRestrictions = translations.apiRestrictions;
+import { AuditWebpages, emptyPagination, AuditWebpage } from "@/types/manage";
 library.add(
   faPencilAlt,
   faArrowDown,
@@ -120,11 +114,10 @@ library.add(
 @Component({
   components: {
     Loading,
+    Input,
     Confirm,
     TimeAgo,
-    CommaList,
     FontAwesomeIcon,
-    CheckList,
     Select,
     LargeMessage,
     Checkbox
@@ -132,27 +125,32 @@ library.add(
   middleware: "auth"
 })
 export default class ManageSettings extends Vue {
-  apiKeys: ApiKeys = emptyPagination;
+  auditWebpages: AuditWebpages = emptyPagination;
   showDelete = false;
   loading = "";
-  apiKey: ApiKey | null = null;
-  apiRestrictions = apiRestrictions;
+  repeatEvery = {
+    0: "Hourly",
+    1: "Daily",
+    2: "Weekly",
+    3: "Monthly"
+  };
+  auditWebpage: AuditWebpage | null = null;
 
   private created() {
-    this.apiKeys = {
-      ...this.$store.getters["manage/apiKeys"](this.$route.params.team)
+    this.auditWebpages = {
+      ...this.$store.getters["manage/auditWebpages"](this.$route.params.team)
     };
   }
 
   private load() {
-    this.loading = "Loading your API keys";
+    this.loading = "Loading your audits";
     this.$store
-      .dispatch("manage/getApiKey", {
+      .dispatch("manage/getAuditWebpage", {
         team: this.$route.params.team,
         id: this.$route.params.key
       })
-      .then(apiKey => {
-        this.apiKey = { ...apiKey };
+      .then(auditWebpage => {
+        this.auditWebpage = { ...auditWebpage };
       })
       .catch(error => {
         throw new Error(error);
@@ -164,12 +162,12 @@ export default class ManageSettings extends Vue {
     this.load();
   }
 
-  private updateApiKey() {
-    this.loading = "Updating your API key";
-    const key = this.apiKey;
+  private updateAuditWebpage() {
+    this.loading = "Updating your audit";
+    const key = this.auditWebpage;
     if (key) {
       [
-        "apiKey",
+        "auditWebpage",
         "secretKey",
         "organizationId",
         "createdAt",
@@ -177,13 +175,13 @@ export default class ManageSettings extends Vue {
       ].forEach(k => delete key[k]);
     }
     this.$store
-      .dispatch("manage/updateApiKey", {
+      .dispatch("manage/updateAuditWebpage", {
         team: this.$route.params.team,
         id: this.$route.params.key,
         ...key
       })
-      .then(apiKeys => {
-        this.apiKeys = { ...apiKeys };
+      .then(auditWebpages => {
+        this.auditWebpages = { ...auditWebpages };
       })
       .catch(error => {
         throw new Error(error);
@@ -193,17 +191,17 @@ export default class ManageSettings extends Vue {
       });
   }
 
-  private deleteApiKey(key: string) {
+  private deleteAuditWebpage(key: string) {
     this.showDelete = false;
-    this.loading = "Deleting your API key";
+    this.loading = "Deleting your audit";
     this.$store
-      .dispatch("manage/deleteApiKey", {
+      .dispatch("manage/deleteAuditWebpage", {
         team: this.$route.params.team,
         id: key
       })
-      .then(apiKeys => {
-        this.apiKeys = { ...apiKeys };
-        this.$router.push(`/manage/${this.$route.params.team}/api-keys`);
+      .then(auditWebpages => {
+        this.auditWebpages = { ...auditWebpages };
+        this.$router.push(`/manage/${this.$route.params.team}/audit-webpages`);
       })
       .catch(error => {
         throw new Error(error);

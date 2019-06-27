@@ -18,6 +18,11 @@ export interface ApiKey extends Row {
   ipRestrictions?: string;
   referrerRestrictions?: string;
 }
+export interface AuditWebpage extends IdRow {
+  organizationId: number;
+  url: string;
+  repeatEvery: number;
+}
 
 export interface Members extends Paginated {
   data: Membership[];
@@ -34,6 +39,10 @@ export interface Sources extends Paginated {
 export interface ApiKeys extends Paginated {
   data: ApiKey[];
 }
+export interface AuditWebpages extends Paginated {
+  data: AuditWebpage[];
+}
+
 export interface Address {
   state: string;
   country: string;
@@ -70,6 +79,9 @@ export interface SourcesKV {
 export interface ApiKeysKV {
   [index: string]: ApiKeys;
 }
+export interface AuditWebpagesKV {
+  [index: string]: AuditWebpages;
+}
 export interface SingleSubscriptionKV {
   [index: string]: {
     [index: string]: subscriptions.ISubscription;
@@ -90,6 +102,11 @@ export interface SingleApiKeyKV {
     [index: string]: ApiKey;
   };
 }
+export interface SingleAuditWebpageKV {
+  [index: string]: {
+    [index: string]: AuditWebpage;
+  };
+}
 
 export interface RootState {
   membership?: Membership;
@@ -104,6 +121,8 @@ export interface RootState {
   source: SingleSourceKV;
   apiKeys: ApiKeysKV;
   apiKey: SingleApiKeyKV;
+  auditWebpages: AuditWebpagesKV;
+  auditWebpage: SingleAuditWebpageKV;
   pricingPlans?: any;
   recentEvents?: any;
   isDownloading: boolean;
