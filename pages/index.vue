@@ -151,7 +151,7 @@
       <section>
         <div class="container">
           <div class="row">
-            <div>
+            <no-ssr>
               <LineChart
                 :data="{
                   labels: [
@@ -178,7 +178,7 @@
                   }
                 }"
               />
-            </div>
+            </no-ssr>
             <div>
               <div class="rc">
                 <div>
@@ -252,7 +252,7 @@
               </div>
               <div class="rc">
                 <div>
-                  <div class="icon-circle" aria-hidden="true">🔍</div>
+                  <div class="icon-circle" aria-hidden="true">♿</div>
                 </div>
                 <div>
                   <dt>Accessibility suggestions</dt>
