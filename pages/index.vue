@@ -151,7 +151,7 @@
       <section>
         <div class="container">
           <div class="row">
-            <no-ssr>
+            <div>
               <LineChart
                 :data="{
                   labels: [
@@ -178,7 +178,7 @@
                   }
                 }"
               />
-            </no-ssr>
+            </div>
             <div>
               <div class="rc">
                 <div>
