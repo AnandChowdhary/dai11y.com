@@ -131,7 +131,10 @@ export const mutations: MutationTree<RootState> = {
     currentApiKeys[team][id] = { ...apiKey };
     Vue.set(state, "apiKey", currentApiKeys);
   },
-  setAuditWebpages(state: RootState, { team, auditWebpages, start, next }): void {
+  setAuditWebpages(
+    state: RootState,
+    { team, auditWebpages, start, next }
+  ): void {
     const currentAuditWebpages = state.auditWebpages;
     currentAuditWebpages[team] = currentAuditWebpages[team] || emptyPagination;
     if (start) {
@@ -153,7 +156,8 @@ export const mutations: MutationTree<RootState> = {
   },
   setAudits(state: RootState, { team, audits, start, next, id }): void {
     const currentAudits = state.audits;
-    currentAudits[`${team}${id}`] = currentAudits[`${team}${id}`] || emptyPagination;
+    currentAudits[`${team}${id}`] =
+      currentAudits[`${team}${id}`] || emptyPagination;
     if (start) {
       currentAudits[`${team}${id}`].data = [
         ...currentAudits[`${team}${id}`].data,
@@ -394,7 +398,12 @@ export const actions: ActionTree<RootState, RootState> = {
     const auditWebpages: any = (await this.$axios.get(
       `/organizations/${team}/audit-webpages?start=${start}`
     )).data;
-    commit("setAuditWebpages", { team, auditWebpages, start, next: auditWebpages.next });
+    commit("setAuditWebpages", {
+      team,
+      auditWebpages,
+      start,
+      next: auditWebpages.next
+    });
     return auditWebpages;
   },
   async getAuditWebpage({ commit }, { team, id }) {
@@ -407,7 +416,10 @@ export const actions: ActionTree<RootState, RootState> = {
   async createAuditWebpage({ dispatch }, context) {
     const data = { ...context };
     delete data.team;
-    await this.$axios.put(`/organizations/${context.team}/audit-webpages`, data);
+    await this.$axios.put(
+      `/organizations/${context.team}/audit-webpages`,
+      data
+    );
     return dispatch("getAuditWebpages", { team: context.team });
   },
   async deleteAuditWebpage({ dispatch }, context) {
@@ -471,9 +483,9 @@ export const getters: GetterTree<RootState, RootState> = {
     state.apiKey[team] && state.apiKey[team][apiKey],
   auditWebpages: state => (team: string) => state.auditWebpages[team],
   auditWebpage: state => (team: string, auditWebpage: string) =>
-      state.auditWebpage[team] && state.auditWebpage[team][auditWebpage],
+    state.auditWebpage[team] && state.auditWebpage[team][auditWebpage],
   audits: state => (team: string, id: number) => state.audits[`${team}${id}`],
   audit: state => (team: string, id: number, audit: string) =>
-      state.audit[`${team}${id}`] && state.audit[`${team}${id}`][audit],
+    state.audit[`${team}${id}`] && state.audit[`${team}${id}`][audit],
   organization: state => (team: string) => state.organizations[team]
 };
