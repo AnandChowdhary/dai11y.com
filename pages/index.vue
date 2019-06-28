@@ -83,7 +83,7 @@
       </section>
       <section class="section section--bg-white">
         <div class="container text text--align-center">
-          <h2>Audit your site for free</h2>
+          <h2>Audit your site for free (30 sec)</h2>
           <div v-if="result && result.data">
             <div class="row">
               <div>
@@ -148,6 +148,123 @@
           </div> -->
         </div>
       </section>
+      <section>
+        <div class="container">
+          <div class="row">
+            <no-ssr>
+              <LineChart
+                :data="{
+                  labels: [
+                    'Monday',
+                    'Tuesday',
+                    'Wednesday',
+                    'Thursday',
+                    'Friday',
+                    'Saturday',
+                    'Sunday'
+                  ],
+                  datasets: [
+                    {
+                      label: 'Average audit score',
+                      backgroundColor: '#0080a5',
+                      data: [81, 82, 84, 88, 81, 79, 83]
+                    }
+                  ]
+                }"
+                :options="{
+                  aspectRatio: 2,
+                  scales: {
+                    yAxes: [{ ticks: { suggestedMin: 65, suggestedMax: 100 } }]
+                  }
+                }"
+              />
+            </no-ssr>
+            <div>
+              <div class="rc">
+                <div>
+                  <div class="icon-circle" aria-hidden="true">📈</div>
+                </div>
+                <div>
+                  <dt>Beautiful visualizations</dt>
+                  <dd>
+                    See metrics for your audits as beautiful, exportable
+                    graphics
+                  </dd>
+                </div>
+              </div>
+              <div class="rc">
+                <div>
+                  <div class="icon-circle" aria-hidden="true">⚡</div>
+                </div>
+                <div>
+                  <dt>Performance monitoring</dt>
+                  <dd>
+                    Track page speed, external resources, blocking scripts, and
+                    more
+                  </dd>
+                </div>
+              </div>
+              <div class="rc">
+                <div>
+                  <div class="icon-circle" aria-hidden="true">🌐</div>
+                </div>
+                <div>
+                  <dt>Public status pages</dt>
+                  <dd>
+                    Allow your users to track your uptime and daily audit
+                    results
+                  </dd>
+                </div>
+              </div>
+              <div class="rc">
+                <div>
+                  <div class="icon-circle" aria-hidden="true">⏱️</div>
+                </div>
+                <div>
+                  <dt>Hourly or daily audits</dt>
+                  <dd>
+                    Set up automated audits for every hour, day, week, or month
+                  </dd>
+                </div>
+              </div>
+              <div class="rc">
+                <div>
+                  <div class="icon-circle" aria-hidden="true">🔔</div>
+                </div>
+                <div>
+                  <dt>Email, Slack, SMS, webhooks</dt>
+                  <dd>
+                    Get notified of alerts if your site it down or scores
+                    decrease
+                  </dd>
+                </div>
+              </div>
+              <div class="rc">
+                <div>
+                  <div class="icon-circle" aria-hidden="true">🔍</div>
+                </div>
+                <div>
+                  <dt>Search Engine Optimzation</dt>
+                  <dd>
+                    Improve your SEO with intelligent recommendations
+                  </dd>
+                </div>
+              </div>
+              <div class="rc">
+                <div>
+                  <div class="icon-circle" aria-hidden="true">🔍</div>
+                </div>
+                <div>
+                  <dt>Accessibility suggestions</dt>
+                  <dd>
+                    Find accessibility issues on your site and ways to fix them
+                  </dd>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
 </template>
@@ -163,6 +280,7 @@ import {
   faHistory
 } from "@fortawesome/free-solid-svg-icons";
 import { faAccessibleIcon } from "@fortawesome/free-brands-svg-icons";
+import LineChart from "@/components/charts/LineChart.vue";
 library.add(faBell, faLaptopCode, faAccessibleIcon, faHistory);
 
 @Component({
@@ -170,6 +288,7 @@ library.add(faBell, faLaptopCode, faAccessibleIcon, faHistory);
     isAuthenticated: "auth/isAuthenticated"
   }),
   components: {
+    LineChart,
     FontAwesomeIcon
   }
 })
@@ -236,18 +355,19 @@ h2 {
 .icon-circle {
   background-color: #fff;
   margin-right: 1rem;
-  height: 3.5rem;
-  width: 3.5rem;
+  height: 3.25rem;
+  width: 3.25rem;
   text-align: center;
   line-height: 3.5rem;
-  font-size: 150%;
+  font-size: 125%;
   border-radius: 80%;
 }
 dt {
-  font-size: 125%;
-  margin-bottom: 0.1rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
   + dd {
     margin-left: 0;
+    margin-bottom: 2rem;
   }
 }
 .rc {
@@ -309,7 +429,7 @@ dt {
     font: inherit;
     font-weight: normal;
     display: block;
-    width: 100%;
+    width: 80%;
     max-width: 500px;
     margin: 1rem auto;
     padding: 0.5rem 1rem;

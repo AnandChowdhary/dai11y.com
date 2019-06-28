@@ -3,8 +3,8 @@
     <div class="hero hero--align-center">
       <h1>Simple, transparent pricing.</h1>
       <p>
-        This is an example pricing page for a SaaS startup. You can add your own
-        plans, extra addons, and more.
+        Track your first 3 webpages for free and switch to unlimited auditing
+        with extra features and hourly audits you're ready.
       </p>
     </div>
     <div
@@ -64,12 +64,13 @@
             style="padding-left: 0"
           >
             <ul>
-              <li>Pageviews</li>
-              <li>Apps &amp; modes</li>
-              <li>Usage metrics</li>
-              <li>White labeling</li>
+              <li>Webpages</li>
+              <li>Status pages</li>
+              <li>Audits</li>
+              <li>Daily metrics</li>
+              <li>Alert notifications</li>
+              <li>Hourly audits</li>
               <li>Support</li>
-              <li>Branding</li>
             </ul>
           </div>
         </div>
@@ -78,17 +79,25 @@
             <ul>
               <li>
                 <font-awesome-icon class="i-y" icon="check" title="Yes" />
-                <span>Unlimited</span>
+                <span>3 monitors</span>
               </li>
               <li>
                 <font-awesome-icon class="i-y" icon="check" title="Yes" />
-                <span>20+ included</span>
+                <span>1 public page</span>
               </li>
               <li>
                 <font-awesome-icon class="i-y" icon="check" title="Yes" />
-                <span>Usage analytics</span>
+                <span>All 5 audits</span>
               </li>
-              <li><font-awesome-icon class="i-n" icon="times" title="No" /></li>
+              <li>
+                <font-awesome-icon class="i-y" icon="check" title="Yes" />
+                <span>1 month history</span>
+              </li>
+
+              <li>
+                <font-awesome-icon class="i-y" icon="check" title="Yes" />
+                <span>Email, Slack</span>
+              </li>
               <li><font-awesome-icon class="i-n" icon="times" title="No" /></li>
               <li><font-awesome-icon class="i-n" icon="times" title="No" /></li>
             </ul>
@@ -110,21 +119,28 @@
               </li>
               <li>
                 <font-awesome-icon class="i-y" icon="check" title="Yes" />
-                <span>20+ included</span>
+                <span>Unlimited</span>
               </li>
               <li>
                 <font-awesome-icon class="i-y" icon="check" title="Yes" />
-                <span>Usage analytics</span>
+                <span>All 5 audits</span>
               </li>
               <li>
                 <font-awesome-icon class="i-y" icon="check" title="Yes" />
-                <span>White labeling</span>
+                <span>Unlimited history</span>
+              </li>
+              <li>
+                <font-awesome-icon class="i-y" icon="check" title="Yes" />
+                <span>Email, Slack, SMS, more</span>
+              </li>
+              <li>
+                <font-awesome-icon class="i-y" icon="check" title="Yes" />
+                <span>Hourly, daily, weekly</span>
               </li>
               <li>
                 <font-awesome-icon class="i-y" icon="check" title="Yes" />
                 <span>Chat support</span>
               </li>
-              <li><font-awesome-icon class="i-n" icon="times" title="No" /></li>
             </ul>
             <div class="text text--mt-2">
               <router-link
@@ -146,23 +162,27 @@
               </li>
               <li>
                 <font-awesome-icon class="i-y" icon="check" title="Yes" />
-                <span>20+ included</span>
+                <span>Unlimited</span>
               </li>
               <li>
                 <font-awesome-icon class="i-y" icon="check" title="Yes" />
-                <span>Usage analytics</span>
+                <span>All 5 audits</span>
               </li>
               <li>
                 <font-awesome-icon class="i-y" icon="check" title="Yes" />
-                <span>White labeling</span>
+                <span>Unlimited history</span>
+              </li>
+              <li>
+                <font-awesome-icon class="i-y" icon="check" title="Yes" />
+                <span>Email, Slack, SMS, more</span>
+              </li>
+              <li>
+                <font-awesome-icon class="i-y" icon="check" title="Yes" />
+                <span>Hourly, daily, weekly</span>
               </li>
               <li>
                 <font-awesome-icon class="i-y" icon="check" title="Yes" />
                 <span>Dedicated support</span>
-              </li>
-              <li>
-                <font-awesome-icon class="i-y" icon="check" title="Yes" />
-                <span>Hide "Powered by"</span>
               </li>
             </ul>
             <div class="text text--mt-2">
