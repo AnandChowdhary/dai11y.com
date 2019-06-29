@@ -302,7 +302,7 @@ export default class Home extends Vue {
   private audit() {
     this.auditing = "Launching a browser";
     this.$axios
-      .get("https://api.dai11y.com/api/audit/?url=https://example.com")
+      .get(`https://api.dai11y.com/api/audit/?url=${this.url}`)
       .then(result => {
         this.auditId = result.data.id;
       });
